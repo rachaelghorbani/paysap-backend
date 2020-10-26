@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create(user_params)
+        byebug
         if user.valid?
             token = encode_token(user_id: user.id)
             render json: { user: user, jwt: token }, status: :created
@@ -23,6 +24,6 @@ class UsersController < ApplicationController
     end
     private
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :first_name, :last_name, :email)
   end
 end

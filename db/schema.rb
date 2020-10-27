@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_201100) do
+ActiveRecord::Schema.define(version: 2020_10_27_135840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "start_time"
+    t.integer "hours"
+    t.string "dayrate_or_hourly"
+    t.float "lat"
+    t.float "long"
+    t.string "location"
+    t.integer "rate"
+    t.integer "total_amount"
+    t.boolean "completed", default: false
+    t.bigint "client_id"
+    t.bigint "freelancer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_jobs_on_client_id"
+    t.index ["freelancer_id"], name: "index_jobs_on_freelancer_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

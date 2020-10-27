@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: MyString
+  hours: 1
+  dayrate_or_hourly: MyString
+  lat: 1
+  long: 1
+  location: MyString
+  rate: 1
+  total_amount: 1
+  completed: false
+  client: one
+  freelancer: one
+
+two:
+  start_time: MyString
+  hours: 1
+  dayrate_or_hourly: MyString
+  lat: 1
+  long: 1
+  location: MyString
+  rate: 1
+  total_amount: 1
+  completed: false
+  client: two
+  freelancer: two

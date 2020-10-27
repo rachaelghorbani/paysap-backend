@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 
     end
 
+    def show
+        user = User.find(params[:id])
+        render json: user
+    end
+
     def profile
         render json: { user: current_user }, status: :accepted
       end

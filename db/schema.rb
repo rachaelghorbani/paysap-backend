@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_135840) do
   enable_extension "plpgsql"
 
   create_table "jobs", force: :cascade do |t|
+    t.string "description"
     t.string "start_time"
     t.integer "hours"
     t.string "dayrate_or_hourly"

@@ -14,6 +14,6 @@ class AuthController < ApplicationController
  
   def user_login_params
     # params { user: {username: 'Chandler Bing', password: 'hi' } }
-    params.require(:auth).permit(:username, :password)
+    params.require(:user).permit(:username, :password)
   end
 end

@@ -1,11 +1,31 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :first_name, :last_name, :account, :jobs_as_client
+  attributes :id, :username, :email, :first_name, :last_name, :account, :jobs_as_client, :jobs_as_freelancer
+
+def account
+    {id: object.account.id, account_number: object.account.account_number, amount: object.account.amount, }
+end
+
+def jobs_as_freelancer
+    object.jobs_as_freelancer.map do |jf|
+
+        job = Job.find(jf.id)
+        client = job.client
+        
+        {id: jf.id, description: jf.description, start_time: jf.start_time, freelancer_id: jf.freelancer_id, hours: jf.hours, dayrate_or_hourly: jf.dayrate_or_hourly, lat: jf.lat, long: jf.long, location: jf.location, rate: jf.rate, total_amount: jf.total_amount, completed: jf.completed, client_email: client.email, client_id: client.id, client_bank_account_id: client.account.id, client_balance: client.account.amount}
+    end
+end
 
   def jobs_as_client
     object.jobs_as_client.map do |jc|
-        {id: jc.id, description: jc.description, start_time: jc.start_time, freelancer_id: jc.freelancer_id, hours: jc.hours, dayrate_or_hourly: jc.dayrate_or_hourly, lat: jc.lat, long: jc.long, location: jc.location, rate: jc.rate, total_amount: jc.total_amount, completed: jc.completed}
+
+        job = Job.find(jc.id)
+        freelancer = job.freelancer
+
+        {id: jc.id, description: jc.description, start_time: jc.start_time, freelancer_id: jc.freelancer_id, hours: jc.hours, dayrate_or_hourly: jc.dayrate_or_hourly, lat: jc.lat, long: jc.long, location: jc.location, rate: jc.rate, total_amount: jc.total_amount, completed: jc.completed, freelancer_email: freelancer.email, freelancer_id: freelancer.id, freelancer_bank_account_id: freelancer.account.id, freelancer_balance: freelancer.account.amount}
     end
   end
+
+ 
 
   
 

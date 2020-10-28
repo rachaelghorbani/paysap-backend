@@ -1,4 +1,10 @@
 class AccountsController < ApplicationController
+    skip_before_action :authorized, only: [:index, :update]
+
+    def index 
+        accounts = Account.all 
+        render json: accounts
+    end
     def create
         account = Account.create(accountParams)
         if account.valid?

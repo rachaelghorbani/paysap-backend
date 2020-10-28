@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_155332) do
+ActiveRecord::Schema.define(version: 2020_10_28_200457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_155332) do
   create_table "jobs", force: :cascade do |t|
     t.string "description"
     t.string "start_time"
-    t.integer "hours"
+    t.float "hours"
     t.string "dayrate_or_hourly"
     t.float "lat"
     t.float "long"

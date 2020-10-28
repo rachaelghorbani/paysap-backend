@@ -13,14 +13,13 @@ class UsersController < ApplicationController
     end
 
     def profile
-        # UserSerializer.new(current_user).to_json
-
         render json: { user: current_user }, status: :accepted
       end
 
     def create 
         user = User.create(user_params)
         if user.valid?
+            Account.create(account_number: rand(1000..9999), amount: rand(500..20000), user_id: user.id)
             token = encode_token(user_id: user.id)
             render json: { user: UserSerializer.new(user), jwt: token }, status: :created
         else

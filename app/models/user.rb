@@ -8,5 +8,7 @@ class User < ApplicationRecord
     has_many :jobs_as_freelancer, class_name: 'Job', foreign_key: :freelancer_id
     has_many :clients, through: :jobs_as_freelancer, source: :client
 
+    has_one :account
+
     # validates :username, uniqueness: { case_sensitive: false }
 end

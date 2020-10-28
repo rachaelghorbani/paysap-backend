@@ -1,11 +1,13 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :first_name, :last_name, :jobs_as_client
+  attributes :id, :username, :email, :first_name, :last_name, :account, :jobs_as_client
 
   def jobs_as_client
     object.jobs_as_client.map do |jc|
         {id: jc.id, description: jc.description, start_time: jc.start_time, freelancer_id: jc.freelancer_id, hours: jc.hours, dayrate_or_hourly: jc.dayrate_or_hourly, lat: jc.lat, long: jc.long, location: jc.location, rate: jc.rate, total_amount: jc.total_amount, completed: jc.completed}
     end
   end
+
+  
 
 end
 

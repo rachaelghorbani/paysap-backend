@@ -10,5 +10,7 @@ class User < ApplicationRecord
 
     has_one :account
 
+    has_many :documents
+
     # validates :username, uniqueness: { case_sensitive: false }
 end

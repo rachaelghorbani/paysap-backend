@@ -10,10 +10,10 @@ class DocumentsController < ApplicationController
 
         # when we create the document set the preview_image_url: preview_url['url']
 
-        byebug
+        # byebug
         prevImage = Cloudinary::Uploader.upload(params[:preview], :format=>:jpg, :page=>1, :resource_type => :image)
         image = Cloudinary::Uploader.upload(params[:document])
-        byebug
+        # byebug
         document = Document.create(pdf_url: image["url"], preview_url: prevImage["url"], user_id: params["user_id"].to_i, description: params["description"])
 
 

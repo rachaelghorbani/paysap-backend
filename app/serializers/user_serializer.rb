@@ -1,6 +1,12 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :first_name, :last_name, :account, :jobs_as_client, :jobs_as_freelancer
+  attributes :id, :username, :email, :first_name, :last_name, :account, :documents, :jobs_as_client, :jobs_as_freelancer, 
 
+
+  def documents
+    object.documents.map do |d|
+        {id:d.id, description: d.description, pdf_url: d.pdf_url, preview_url: d.preview_url}
+    end 
+  end
 def account
     {id: object.account.id, account_number: object.account.account_number, amount: object.account.amount, }
 end

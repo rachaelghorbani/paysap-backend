@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-    skip_before_action :authorized, only: [:create, :index]
+    skip_before_action :authorized, only: [:index, :create]
 
     def index 
         documents = Document.all 
@@ -11,9 +11,10 @@ class DocumentsController < ApplicationController
         # when we create the document set the preview_image_url: preview_url['url']
 
         byebug
+        prevImage = Cloudinary::Uploader.upload(params[:preview], :format=>:jpg, :page=>1, :resource_type => :image)
         image = Cloudinary::Uploader.upload(params[:document])
         byebug
-        document = Document.create(url: image["url"], user_id: params["user_id"].to_i, description: params["description"])
+        document = Document.create(pdf_url: image["url"], preview_url: prevImage["url"], user_id: params["user_id"].to_i, description: params["description"])
 
 
         if document.save 

@@ -19,7 +19,7 @@ class JobsController < ApplicationController
         if job.update(job_params)
             render json: job
         else
-            render json: {error: "failed to create job"}, status: :not_acceptable
+            render json: {error: "failed to update job"}, status: :not_acceptable
         end
     end
 

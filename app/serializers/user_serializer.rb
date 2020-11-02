@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :first_name, :last_name, :account, :documents, :jobs_as_client, :jobs_as_freelancer, 
+  attributes :id, :username, :email, :first_name, :last_name, :account, :documents, :jobs_as_client, :jobs_as_freelancer, :expenses
 
 
   def documents

@@ -14,5 +14,5 @@ class User < ApplicationRecord
 
     has_many :expenses
 
-    # validates :username, uniqueness: { case_sensitive: false }
+    validates :username, uniqueness: { case_sensitive: false }
 end

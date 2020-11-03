@@ -23,8 +23,19 @@ class DocumentsController < ApplicationController
             render json: {error: document.errors.full_messages}, status: :not_acceptable
         end
     end
+
+    def destroy 
+
+        Cloudinary::Uploader.destroy(params[:thumb_public])
+        Cloudinary::Uploader.destroy(params[:pdf_public])
+        document = Document.find(params[:id])
+        document.destroy
+        render json: document
+
+    end
     private
     def document_params
+        params.require(:document).permit(:thumb_public, :pdf_public, :id)
 
     end
 

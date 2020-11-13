@@ -28,6 +28,7 @@ A user can:
 * Redux
 * Google Maps `google-maps-react`
 * Google Places `react-places-autocomplete`
+* Mozilla Geolocation API
 * Recharts `recharts`
 * Calendar `react-datepicker` and `react-datetime-picker`
 * Excel Export `react-html-table-to-excel`
